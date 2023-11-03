@@ -17,11 +17,9 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
     int FPS = 60;
-
-
     Thread gameThread;
     KeyHandler KeyH = new KeyHandler();
-    Player player = new Player(GamePanel, KeyH);
+    Player player = new Player(this, KeyH);
     int playerX = 100;
     int playerY = 100;
     int playerSpeed = 4;
@@ -40,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        // TODO Auto-generated method stu
+        
         double interval = 1000000000/FPS;
 
         double nextDrawTime = System.nanoTime() + interval;
@@ -53,7 +51,7 @@ public class GamePanel extends JPanel implements Runnable{
                 Thread.sleep((long)sleepTime/1000000);
                 nextDrawTime += interval;
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
+               
                 e.printStackTrace();
             }
             
@@ -61,9 +59,6 @@ public class GamePanel extends JPanel implements Runnable{
             update();
             //2 draw
             repaint();
-
-
-            System.out.println("sadasd");
         }
         throw new UnsupportedOperationException("Unimplemented method 'run'");
     }

@@ -16,7 +16,7 @@ public class KeyHandler implements KeyListener {
         // TODO Auto-generated method stub
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_W){
-            up = true;
+            this.up = true;
         }
         if(code == KeyEvent.VK_S){
             down = true;
