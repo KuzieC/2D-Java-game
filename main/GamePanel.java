@@ -2,6 +2,7 @@ package main;
 import javax.swing.JPanel;
 
 import entity.Player;
+import tile.TileManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,17 +13,15 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 16;
     final int scale = 2;
     public int tileSize = originalTileSize * scale;
-    final int maxScreenCol = 16;
-    final int maxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenCol;
-    final int screenHeight = tileSize * maxScreenRow;
+    public int maxScreenCol = 16;
+    public int maxScreenRow = 12;
+    public int screenWidth = tileSize * maxScreenCol;
+    public int screenHeight = tileSize * maxScreenRow;
     int FPS = 60;
+    TileManager tileManager = new TileManager(this);
     Thread gameThread;
     KeyHandler KeyH = new KeyHandler();
     Player player = new Player(this, KeyH);
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 4;
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.black);
@@ -37,24 +36,18 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     @Override
-    public void run() {
-        
+    public void run() {       
         double interval = 1000000000/FPS;
-
         double nextDrawTime = System.nanoTime() + interval;
-
         while(gameThread != null){
-            
             try {
                 double sleepTime = nextDrawTime - System.nanoTime();
                 if(sleepTime < 0) sleepTime = 0;
                 Thread.sleep((long)sleepTime/1000000);
                 nextDrawTime += interval;
             } catch (InterruptedException e) {
-               
                 e.printStackTrace();
             }
-            
             //1 update
             update();
             //2 draw
@@ -70,6 +63,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
+        tileManager.draw(g2);
         player.draw(g2);
         g2.dispose();
     }
