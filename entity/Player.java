@@ -11,21 +11,25 @@ import main.GamePanel;
 public class Player extends Entity {
     GamePanel gp;
     KeyHandler KeyH;
+    public final int screenX,screenY;
 
-    public Player(GamePanel gp,KeyHandler KeyH){
+    public Player(GamePanel gp, KeyHandler KeyH) {
         this.gp = gp;
         this.KeyH = KeyH;
+        screenX = gp.screenWidth/2 - gp.tileSize/2;
+        screenY = gp.screenHeight/2 - gp.tileSize/2;
         setDefaultValues();
         getPlayerImage();
     }
 
-    public void setDefaultValues(){
-         x = 100;
-         y = 100;
-         speed = 4;
-         direction = "down";
+    public void setDefaultValues() {
+        worldX = gp.tileSize*23;
+        worldY = gp.tileSize*23;
+        speed = 4;
+        direction = "down";
     }
-    public void getPlayerImage(){
+
+    public void getPlayerImage() {
         try {
             up1 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_up_1.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/res/player/boy_up_2.png"));
@@ -38,55 +42,62 @@ public class Player extends Entity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    } 
-    public void update(){
-        if(KeyH.up) {
-            y -= speed;
+    }
+
+    public void update() {
+        if (KeyH.up) {
+            worldY -= speed;
             direction = "up";
-        }
-        else if(KeyH.down) {
-            y += speed;
+        } else if (KeyH.down) {
+            worldY += speed;
             direction = "down";
-        }
-        else if (KeyH.left) {
-            x -= speed;
+        } else if (KeyH.left) {
+            worldX -= speed;
             direction = "left";
-        }
-        else if(KeyH.right) {
-            x += speed;
+        } else if (KeyH.right) {
+            worldX += speed;
             direction = "right";
         }
 
-        if(strideCounter > 10){
-            if(strideNum){
+        if (strideCounter > 10) {
+            if (strideNum) {
                 strideNum = false;
-            }
-            else strideNum = true;
+            } else
+                strideNum = true;
             strideCounter = 0;
         }
         strideCounter++;
     }
-    public void draw(Graphics2D g2){
+
+    public void draw(Graphics2D g2) {
         BufferedImage image = up1;
-        switch(direction) {
-        case "up":
-            if(strideNum) image = up1;
-            else image = up2;
-            break;
-        case "down":
-            if(strideNum) image = down1;
-            else image = down2;
-            break;
-        case "left":
-            if(strideNum) image = left1;
-            else image = left2;
-            break;
-        case "right":
-            if(strideNum) image = right1;
-            else image = right2;
-            break;
+        switch (direction) {
+            case "up":
+                if (strideNum)
+                    image = up1;
+                else
+                    image = up2;
+                break;
+            case "down":
+                if (strideNum)
+                    image = down1;
+                else
+                    image = down2;
+                break;
+            case "left":
+                if (strideNum)
+                    image = left1;
+                else
+                    image = left2;
+                break;
+            case "right":
+                if (strideNum)
+                    image = right1;
+                else
+                    image = right2;
+                break;
         }
-        g2.drawImage(image, x,y,gp.tileSize,gp.tileSize,null );
- 
+        g2.drawImage(image,screenX, screenY, gp.tileSize, gp.tileSize, null);
+
     }
 }

@@ -1,11 +1,12 @@
 package main;
+
 import javax.swing.JFrame;
-public class main{
+
+public class main {
     public static void main(String[] args) {
-        JFrame window =  new JFrame();
+        JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        
 
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
@@ -15,8 +16,6 @@ public class main{
         window.setVisible(true);
         gamePanel.startGameThread();
 
-
     }
 
-    
 }
