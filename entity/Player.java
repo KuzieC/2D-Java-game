@@ -2,6 +2,7 @@ package entity;
 
 import main.KeyHandler;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
@@ -20,11 +21,13 @@ public class Player extends Entity {
         screenY = gp.screenHeight/2 - gp.tileSize/2;
         setDefaultValues();
         getPlayerImage();
+        solidArea = new Rectangle(10,10,12,12);
+
     }
 
     public void setDefaultValues() {
         worldX = gp.tileSize*23;
-        worldY = gp.tileSize*23;
+        worldY = gp.tileSize*21;
         speed = 4;
         direction = "down";
     }
@@ -45,20 +48,35 @@ public class Player extends Entity {
     }
 
     public void update() {
+       if(!(KeyH.up||KeyH.down||KeyH.left||KeyH.right)) return;
         if (KeyH.up) {
-            worldY -= speed;
             direction = "up";
         } else if (KeyH.down) {
-            worldY += speed;
             direction = "down";
         } else if (KeyH.left) {
-            worldX -= speed;
             direction = "left";
         } else if (KeyH.right) {
-            worldX += speed;
             direction = "right";
         }
-
+        collisonOn = false;
+        gp.collisionChecker.checkTile(this);
+        System.out.println(collisonOn);
+        if(!collisonOn){
+            switch (direction) {
+                case "up":
+                    worldY -= speed;
+                    break;
+                case "down":
+                    worldY += speed;
+                    break;
+                case "left":
+                    worldX -= speed;
+                    break;
+                case "right":
+                    worldX += speed;
+                    break;
+            }
+        }
         if (strideCounter > 10) {
             if (strideNum) {
                 strideNum = false;

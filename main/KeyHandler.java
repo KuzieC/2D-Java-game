@@ -9,7 +9,7 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
+
     }
 
     @Override
@@ -28,7 +28,7 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_D) {
             right = true;
         }
-        throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+       
     }
 
     @Override
@@ -48,7 +48,7 @@ public class KeyHandler implements KeyListener {
             right = false;
         }
 
-        throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
+      
     }
 
 }

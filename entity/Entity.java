@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Entity {
@@ -9,4 +10,6 @@ public class Entity {
     public String direction;
     public int strideCounter = 0;
     public boolean strideNum = false;
+    public Rectangle solidArea;
+    public boolean collisonOn = false;
 }

@@ -9,8 +9,8 @@ import main.GamePanel;
 
 public class TileManager {
     GamePanel gp;
-    Tile[] tile;
-    String mapTileNum[][];
+    public Tile[] tile;
+    public String mapTileNum[][];
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
@@ -25,6 +25,7 @@ public class TileManager {
         try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/grass.png"));
+            tile[0].collision = false;
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/wall.png"));
             tile[1].collision = true;
@@ -33,11 +34,13 @@ public class TileManager {
             tile[2].collision = true;
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/earth.png"));
+            tile[3].collision = false;
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/tree.png"));
             tile[4].collision = true;
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/sand.png"));
+            tile[5].collision = false;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,12 +86,11 @@ public class TileManager {
                 worldX < gp.player.worldX + gp.player.screenX+3*gp.tileSize &&
                 worldY > gp.player.worldY - gp.player.screenY-3*gp.tileSize &&
                 worldY < gp.player.worldY + gp.player.screenY+3*gp.tileSize){
-                     int tileType = Integer.parseInt(mapTileNum[row][col]);
+                    int tileType = Integer.parseInt(mapTileNum[row][col]);
                     g2.drawImage(tile[tileType].image, ScreenX, ScreenY, gp.tileSize, gp.tileSize, null);
           
                 }
             col++;
-            x += gp.tileSize;
             if (col == gp.maxWorldCol) {
                 col = 0;
                 row++;
