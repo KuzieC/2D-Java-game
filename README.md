@@ -1,45 +1,35 @@
-# Project Name
+# 2D RPG Treasure Hunting Game
 
 ## Introduction
-Welcome to *Project Name*! This is an exciting journey where we're building [Brief description of your project]. The project is currently in progress, and we're thrilled to share our journey with you.
+Welcome to *2D Treasure Hunting Game*! This is an exciting journey where I'm building a 2D tile exploring Role-play game, you can control the character by W S A D key to move around the map and explore different NPCs. The project is currently in progres.
 
 ## Project Status
 🚧 In Progress 🚧
 
+
 ### What's Happening Now
-- [Current feature or phase being developed]
-- [Any recent updates or milestones achieved]
+- Object Interaction and detection
 
 ### Up Next
-- [Next steps or features planned]
+- Sound
+- Improve rendering efficiency
+- Pause game
+- NPC
+- Heath Bar
+- Weapon system
+- Monsters
 
+### Finished
+- Collision detection with map
+- Camera and Screen
+- Tiles
+- Player image
+- Player animation
+- Game loop
+- 
 ## Technologies Used
-- [List of technologies, languages, frameworks]
+- java 17.0.9 2023-10-17 LTS
 
-## Getting Started
-Want to try it out or contribute? Here's how you can set up the project locally:
-1. Clone the repository: `git clone [repository link]`
-2. [Other setup steps]
 
-## Contributions
-We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
-- Reporting a bug
-- Discussing the current state of the code
-- Submitting a fix
-- Proposing new features
-
-## License
-[Your chosen license, or "This project is licensed under the [LICENSE NAME] - see the [LICENSE.md](LICENSE.md) file for details"]
-
-## Contact
-Feel free to reach out for any questions, suggestions, or discussions.
-- GitHub: @[YourGitHub]
-- Email: [YourEmail]
-- [Any other contact method you prefer]
-
-## Acknowledgements
-- [Any special thanks or credits to resources or people who helped]
-
----
 
 Thank you for checking out *Project Name*! Stay tuned for more updates. ✨
