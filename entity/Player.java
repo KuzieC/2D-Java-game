@@ -21,6 +21,7 @@ public class Player extends Entity {
         screenY = gp.screenHeight/2 - gp.tileSize/2;
         setDefaultValues();
         getPlayerImage();
+        //core area
         solidArea = new Rectangle(10,10,12,12);
 
     }
@@ -77,7 +78,7 @@ public class Player extends Entity {
                     break;
             }
         }
-        if (strideCounter > 10) {
+        if (strideCounter > 12) {
             if (strideNum) {
                 strideNum = false;
             } else

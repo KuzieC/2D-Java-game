@@ -10,6 +10,7 @@ public class CollisionChecker {
     }
 
     public void checkTile(Entity entity) {
+        //four corner detection
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;
         int entityRightWorldX = entity.worldX + entity.solidArea.x + entity.solidArea.width;
         int entityTopWorldY = entity.worldY + entity.solidArea.y;

@@ -14,6 +14,7 @@ public class main {
         window.setTitle("2D game");
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+        gamePanel.setUpGame();
         gamePanel.startGameThread();
 
     }
