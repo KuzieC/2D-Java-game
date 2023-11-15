@@ -26,7 +26,7 @@ Welcome to *2D Treasure Hunting Game*! This is an exciting journey where I'm bui
 - Player image
 - Player animation
 - Game loop
-- 
+  
 ## Technologies Used
 - java 17.0.9 2023-10-17 LTS
 
