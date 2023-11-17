@@ -23,6 +23,8 @@ public class Player extends Entity {
         getPlayerImage();
         //core area
         solidArea = new Rectangle(10,10,12,12);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
 
     }
 

@@ -11,5 +11,6 @@ public class Entity {
     public int strideCounter = 0;
     public boolean strideNum = false;
     public Rectangle solidArea;
+    public int solidAreaDefaultX,solidAreaDefaultY;
     public boolean collisonOn = false;
 }
