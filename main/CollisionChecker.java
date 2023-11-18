@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.Rectangle;
+
 import entity.Entity;
 
 public class CollisionChecker {
@@ -67,54 +69,58 @@ public class CollisionChecker {
         for(int i = 0; i<gp.obj.length;i++){
 
             if(gp.obj[i] != null){
-                entity.solidArea.x += entity.worldX;
-                entity.solidArea.y += entity.worldY;
-
-                gp.obj[i].solidArea.x += gp.obj[i].worldX;
-                gp.obj[i].solidArea.y += gp.obj[i].worldY;
-
+                int Entity_x = entity.solidArea.x + entity.worldX;
+                int Entity_y = entity.solidArea.y + entity.worldY;
+                int Obj_x = gp.obj[i].solidArea.x + gp.obj[i].worldX;
+                int Obj_y = gp.obj[i].solidArea.y + gp.obj[i].worldY;
+                Rectangle Entity;
+                Rectangle Object;
                 switch(entity.direction){
                     case "up":
-                        entity.solidArea.y -= entity.speed;
-                        if(entity.solidArea.intersects(gp.obj[i].solidArea)){
+                    Entity = new Rectangle(Entity_x,Entity_y-entity.speed,entity.solidArea.width,entity.solidArea.height);
+                    Object= new Rectangle(Obj_x,Obj_y,gp.obj[i].solidArea.width,gp.obj[i].solidArea.height);
+                        if(Entity.intersects(Object)){
                             if(gp.obj[i].collision){
                                 entity.collisonOn = true;
                             }
                             if(player){
-                                index = 1;
+                                index = i;
                             }
                         }
                         break;
                     case "down":
-                        entity.solidArea.y += entity.speed;
-                        if(entity.solidArea.intersects(gp.obj[i].solidArea)){
+                        Entity = new Rectangle(Entity_x,Entity_y+entity.speed,entity.solidArea.width,entity.solidArea.height);
+                        Object = new Rectangle(Obj_x,Obj_y,gp.obj[i].solidArea.width,gp.obj[i].solidArea.height);
+                        if(Entity.intersects(Object)){
                             if(gp.obj[i].collision){
                                 entity.collisonOn = true;
                             }
                             if(player){
-                                index = 1;
+                                index = i;
                             }
                         }                    
                         break;
                     case "left":
-                        entity.solidArea.x -= entity.speed;
-                        if(entity.solidArea.intersects(gp.obj[i].solidArea)){
+                        Entity = new Rectangle(Entity_x-entity.speed,Entity_y,entity.solidArea.width,entity.solidArea.height);
+                        Object = new Rectangle(Obj_x,Obj_y,gp.obj[i].solidArea.width,gp.obj[i].solidArea.height);
+                        if(Entity.intersects(Object)){
                             if(gp.obj[i].collision){
                                 entity.collisonOn = true;
                             }
                             if(player){
-                                index = 1;
+                                index = i;
                             }
                         }                    
                         break;
                     case "right":
-                        entity.solidArea.y += entity.speed;
-                        if(entity.solidArea.intersects(gp.obj[i].solidArea)){
+                        Entity = new Rectangle(Entity_x+entity.speed,Entity_y,entity.solidArea.width,entity.solidArea.height);
+                        Object = new Rectangle(Obj_x,Obj_y,gp.obj[i].solidArea.width,gp.obj[i].solidArea.height);
+                        if(Entity.intersects(Object)){
                             if(gp.obj[i].collision){
                                 entity.collisonOn = true;
                             }
                             if(player){
-                                index = 1;
+                                index = i;
                             }
                         }                    
                         break;

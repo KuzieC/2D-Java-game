@@ -13,7 +13,7 @@ public class Player extends Entity {
     GamePanel gp;
     KeyHandler KeyH;
     public final int screenX,screenY;
-
+    int keyNum = 0;
     public Player(GamePanel gp, KeyHandler KeyH) {
         this.gp = gp;
         this.KeyH = KeyH;
@@ -63,6 +63,8 @@ public class Player extends Entity {
         }
         collisonOn = false;
         gp.collisionChecker.checkTile(this);
+        int ObjIndex = gp.collisionChecker.checkObject(this, true);
+        if(ObjIndex!= 999) PickUp(ObjIndex);
         System.out.println(collisonOn);
         if(!collisonOn){
             switch (direction) {
@@ -89,7 +91,23 @@ public class Player extends Entity {
         }
         strideCounter++;
     }
-
+    public void PickUp (int i){
+        String objectName = gp.obj[i].name;
+        switch(objectName){
+            case "Key":
+                keyNum++;
+                gp.obj[i] = null;
+                break;
+            case "Door":
+                gp.obj[i] = null;
+                break;
+            case "Boots":
+                speed += 3;
+                gp.obj[i] = null;
+                break;
+                
+        }
+    }
     public void draw(Graphics2D g2) {
         BufferedImage image = up1;
         switch (direction) {
