@@ -96,12 +96,15 @@ public class Player extends Entity {
         switch(objectName){
             case "Key":
                 keyNum++;
+                gp.playSE(1);
                 gp.obj[i] = null;
                 break;
             case "Door":
+                gp.playSE(3);
                 gp.obj[i] = null;
                 break;
             case "Boots":
+                gp.playSE(2);
                 speed += 3;
                 gp.obj[i] = null;
                 break;
