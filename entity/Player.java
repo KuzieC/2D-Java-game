@@ -13,7 +13,7 @@ public class Player extends Entity {
     GamePanel gp;
     KeyHandler KeyH;
     public final int screenX,screenY;
-    int keyNum = 0;
+    public int keyNum = 0;
     public Player(GamePanel gp, KeyHandler KeyH) {
         this.gp = gp;
         this.KeyH = KeyH;
@@ -22,7 +22,7 @@ public class Player extends Entity {
         setDefaultValues();
         getPlayerImage();
         //core area
-        solidArea = new Rectangle(10,10,12,12);
+        solidArea = new Rectangle(15,15,2,2);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -100,8 +100,11 @@ public class Player extends Entity {
                 gp.obj[i] = null;
                 break;
             case "Door":
-                gp.playSE(3);
-                gp.obj[i] = null;
+                if(keyNum >0){
+                    keyNum--;
+                    gp.playSE(3);
+                    gp.obj[i] = null;
+                }
                 break;
             case "Boots":
                 gp.playSE(2);

@@ -30,7 +30,7 @@ public class CollisionChecker {
                 tileNum1 = Integer.parseInt(gp.tileManager.mapTileNum[entityTopRow][entityLeftCol]);
                 tileNum2 = Integer.parseInt(gp.tileManager.mapTileNum[entityTopRow][entityRightCol]);
                 System.out.println(tileNum1+" "+tileNum2);
-                if(gp.tileManager.tile[tileNum1].collision && gp.tileManager.tile[tileNum2].collision){
+                if(gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum2].collision){
                     entity.collisonOn = true;
                 }
                 break;
@@ -39,7 +39,7 @@ public class CollisionChecker {
                 tileNum1 = Integer.parseInt(gp.tileManager.mapTileNum[entityBOttomRow][entityLeftCol]);
                 tileNum2 = Integer.parseInt(gp.tileManager.mapTileNum[entityBOttomRow][entityRightCol]);
                 System.out.println(tileNum1+" "+tileNum2);
-                if(gp.tileManager.tile[tileNum1].collision && gp.tileManager.tile[tileNum2].collision){
+                if(gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum2].collision){
                     entity.collisonOn = true;
                 }
                 break;
@@ -48,7 +48,7 @@ public class CollisionChecker {
                 tileNum1 = Integer.parseInt(gp.tileManager.mapTileNum[entityTopRow][entityLeftCol]);
                 tileNum2 = Integer.parseInt(gp.tileManager.mapTileNum[entityBOttomRow][entityLeftCol]);
                 System.out.println(tileNum1+" "+tileNum2);
-                if(gp.tileManager.tile[tileNum1].collision && gp.tileManager.tile[tileNum2].collision){
+                if(gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum2].collision){
                     entity.collisonOn = true;
                 }
                 break;
@@ -57,7 +57,7 @@ public class CollisionChecker {
                 tileNum1 = Integer.parseInt(gp.tileManager.mapTileNum[entityTopRow][entityRightCol]);
                 tileNum2 = Integer.parseInt(gp.tileManager.mapTileNum[entityBOttomRow][entityRightCol]);
                 System.out.println(tileNum1+" "+tileNum2);
-                if(gp.tileManager.tile[tileNum1].collision && gp.tileManager.tile[tileNum2].collision){
+                if(gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum2].collision){
                     entity.collisonOn = true;
                 }
                 break;
